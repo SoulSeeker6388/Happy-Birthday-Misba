@@ -1,6 +1,5 @@
 // ==========================================
 // MISBA BIRTHDAY WEBSITE
-// Acode Friendly JavaScript
 // ==========================================
 
 
@@ -10,30 +9,19 @@
 
 window.startSurprise = function () {
 
-    const welcome =
-        document.getElementById("welcome");
+    var welcome = document.getElementById("welcome");
+    var message = document.getElementById("message");
 
-    const message =
-        document.getElementById("message");
-
-
-    if (!welcome || !message) {
-        return;
-    }
-
+    if (!welcome || !message) return;
 
     welcome.classList.add("hidden");
-
     message.classList.remove("hidden");
-
 
     message.scrollIntoView({
         behavior: "smooth"
     });
 
-
     createConfetti(30);
-
 };
 
 
@@ -43,25 +31,17 @@ window.startSurprise = function () {
 
 window.showCake = function () {
 
-    const cake =
-        document.getElementById("cake");
+    var cakeSection = document.getElementById("cake");
 
+    if (!cakeSection) return;
 
-    if (!cake) {
-        return;
-    }
+    cakeSection.classList.remove("hidden");
 
-
-    cake.classList.remove("hidden");
-
-
-    cake.scrollIntoView({
+    cakeSection.scrollIntoView({
         behavior: "smooth"
     });
 
-
     createConfetti(35);
-
 };
 
 
@@ -71,121 +51,289 @@ window.showCake = function () {
 
 window.blowCandles = function () {
 
-    const flames =
-        document.querySelectorAll(".flame");
+    var flames = document.querySelectorAll(".flame");
+    var button = document.querySelector(".blow-btn");
+    var message = document.getElementById("cake-message");
+
+    if (!button || !message) return;
+
+    button.disabled = true;
+    button.innerHTML = "💨 Candles Blowing...";
 
 
-    const button =
-        document.querySelector(".blow-btn");
+    flames.forEach(function (flame, index) {
+
+        setTimeout(function () {
+
+            flame.style.transition = "0.5s ease";
+            flame.style.transform = "scale(0)";
+            flame.style.opacity = "0";
+
+        }, index * 250);
+
+    });
 
 
-    const message =
-        document.getElementById("cake-message");
+    setTimeout(function () {
+
+        message.innerHTML =
+            "✨ Wish Made! ✨<br>" +
+            "🎂 Happy Birthday Misba! 🎉";
 
 
-    if (!button || !message) {
+        // IMPORTANT:
+        // Same button becomes Cut The Cake
+        button.innerHTML = "🔪 Cut The Cake!";
+        button.disabled = false;
+
+        button.onclick = function () {
+            cutCake();
+        };
+
+
+        createConfetti(80);
+
+    }, 1500);
+};
+
+
+// ==========================================
+// CUT THE CAKE
+// ==========================================
+
+function cutCake() {
+
+    var cake = document.querySelector(".cake");
+    var button = document.querySelector(".blow-btn");
+    var message = document.getElementById("cake-message");
+
+    if (!cake || !button || !message) return;
+
+
+    if (cake.getAttribute("data-cut") === "true") {
         return;
     }
 
+    cake.setAttribute("data-cut", "true");
+
 
     button.disabled = true;
+    button.innerHTML = "🔪 Cutting Cake...";
+
+    message.innerHTML =
+        "🔪 Knife is cutting the cake... 🎂";
 
 
-    button.innerHTML =
-        "💨 Candles Blowing...";
+    // ======================================
+    // KNIFE
+    // ======================================
+
+    var knife = document.createElement("div");
+
+    knife.className = "cake-knife";
+
+    knife.innerHTML = "🔪";
+
+    knife.style.position = "absolute";
+    knife.style.left = "50%";
+    knife.style.top = "-65px";
+    knife.style.transform =
+        "translateX(-50%) rotate(-35deg)";
+    knife.style.fontSize = "45px";
+    knife.style.lineHeight = "1";
+    knife.style.zIndex = "1000";
+    knife.style.pointerEvents = "none";
+    knife.style.transition =
+        "top 1.2s ease-in-out";
 
 
-    flames.forEach(
-        function (flame, index) {
-
-            setTimeout(
-                function () {
-
-                    flame.style.transition =
-                        "0.5s";
-
-                    flame.style.transform =
-                        "scale(0)";
-
-                    flame.style.opacity =
-                        "0";
-
-                },
-                index * 250
-            );
-
-        }
-    );
+    cake.appendChild(knife);
 
 
-    setTimeout(
-        function () {
+    // ======================================
+    // CUT LINE
+    // ======================================
 
-            message.innerHTML =
-                "✨ Wish Made! ✨<br>" +
-                "🎂 Happy Birthday Misba! 🎉";
+    var cutLine = document.createElement("div");
 
+    cutLine.className = "cake-cut-line";
 
-            button.innerHTML =
-                "🎉 Celebration Time!";
-
-
-            createConfetti(120);
-
-
-            floatingCelebration();
-
-        },
-        1200
-    );
-
-
-    setTimeout(
-        function () {
-
-            const gallery =
-                document.getElementById("gallery");
+    cutLine.style.position = "absolute";
+    cutLine.style.left = "50%";
+    cutLine.style.top = "8%";
+    cutLine.style.width = "3px";
+    cutLine.style.height = "84%";
+    cutLine.style.background =
+        "white";
+    cutLine.style.boxShadow =
+        "0 0 10px white";
+    cutLine.style.transform =
+        "translateX(-50%) scaleY(0)";
+    cutLine.style.transformOrigin = "top";
+    cutLine.style.zIndex = "900";
+    cutLine.style.transition =
+        "transform 0.8s ease";
+    cutLine.style.pointerEvents = "none";
 
 
-            if (!gallery) {
-                return;
-            }
+    cake.appendChild(cutLine);
 
 
-            gallery.classList.remove("hidden");
+    // ======================================
+    // KNIFE CUTS DOWN
+    // ======================================
+
+    setTimeout(function () {
+
+        knife.style.top = "35%";
+
+        cutLine.style.transform =
+            "translateX(-50%) scaleY(1)";
+
+    }, 100);
 
 
-            gallery.scrollIntoView({
-                behavior: "smooth"
-            });
+    // ======================================
+    // CREATE TWO CAKE PIECES
+    // ======================================
+
+    setTimeout(function () {
+
+        cake.classList.add("cake-is-cut");
 
 
-        },
-        4000
-    );
+        // LEFT PIECE
+        var leftPiece =
+            document.createElement("div");
 
-};
+        leftPiece.className =
+            "cake-half cake-half-left";
+
+        leftPiece.innerHTML = "🍰";
+
+        leftPiece.style.left = "25%";
+        leftPiece.style.top = "50%";
+        leftPiece.style.fontSize = "45px";
+        leftPiece.style.opacity = "0";
+        leftPiece.style.transform =
+            "translate(-50%, -50%)";
+
+
+        // RIGHT PIECE
+        var rightPiece =
+            document.createElement("div");
+
+        rightPiece.className =
+            "cake-half cake-half-right";
+
+        rightPiece.innerHTML = "🍰";
+
+        rightPiece.style.left = "75%";
+        rightPiece.style.top = "50%";
+        rightPiece.style.fontSize = "45px";
+        rightPiece.style.opacity = "0";
+        rightPiece.style.transform =
+            "translate(-50%, -50%)";
+
+
+        leftPiece.style.transition =
+            "all 0.8s ease";
+
+        rightPiece.style.transition =
+            "all 0.8s ease";
+
+
+        cake.appendChild(leftPiece);
+        cake.appendChild(rightPiece);
+
+
+        setTimeout(function () {
+
+            leftPiece.style.opacity = "1";
+
+            leftPiece.style.transform =
+                "translate(-50%, -50%) translateX(-25px) rotate(-5deg)";
+
+
+            rightPiece.style.opacity = "1";
+
+            rightPiece.style.transform =
+                "translate(-50%, -50%) translateX(25px) rotate(5deg)";
+
+        }, 50);
+
+
+        // Knife finishes cutting
+        knife.style.top = "65%";
+
+
+    }, 1400);
+
+
+    // ======================================
+    // CELEBRATION
+    // ======================================
+
+    setTimeout(function () {
+
+        message.innerHTML =
+            "🎂✨ Cake Cut Ho Gaya! ✨🎂<br>" +
+            "🎉 Celebration Time! 🎉";
+
+
+        button.innerHTML =
+            "🎉 Celebration Time!";
+
+        button.disabled = false;
+
+
+        createConfetti(150);
+        floatingCelebration();
+
+
+    }, 2800);
+
+
+    // ======================================
+    // SHOW GALLERY
+    // ======================================
+
+    setTimeout(function () {
+
+        var gallery =
+            document.getElementById("gallery");
+
+        if (!gallery) return;
+
+        gallery.classList.remove("hidden");
+
+        gallery.scrollIntoView({
+            behavior: "smooth"
+        });
+
+    }, 5000);
+}
 
 
 // ==========================================
 // CONFETTI
 // ==========================================
 
-function createConfetti(amount = 30) {
+/**
+ * @param {number} amount
+ */
 
-    const container =
+function createConfetti(amount) {
+
+    var container =
         document.getElementById(
             "confetti-container"
         );
 
-
-    if (!container) {
-        return;
-    }
+    if (!container) return;
 
 
-    const emojis = [
-
+    var emojis = [
         "🎉",
         "🎊",
         "✨",
@@ -195,17 +343,12 @@ function createConfetti(amount = 30) {
         "🎈",
         "🌸",
         "⭐"
-
     ];
 
 
-    for (
-        let i = 0;
-        i < amount;
-        i++
-    ) {
+    for (var i = 0; i < amount; i++) {
 
-        const confetti =
+        var confetti =
             document.createElement("div");
 
 
@@ -227,39 +370,28 @@ function createConfetti(amount = 30) {
 
 
         confetti.style.fontSize =
-            (
-                15 +
-                Math.random() * 20
-            ) + "px";
+            15 + Math.random() * 20 + "px";
 
 
         confetti.style.animationDuration =
-            (
-                2 +
-                Math.random() * 3
-            ) + "s";
+            2 + Math.random() * 3 + "s";
 
 
         confetti.style.animationDelay =
-            (
-                Math.random() * 0.5
-            ) + "s";
+            Math.random() * 0.5 + "s";
 
 
         container.appendChild(confetti);
 
 
-        setTimeout(
-            function () {
+        setTimeout(function () {
 
+            if (confetti) {
                 confetti.remove();
+            }
 
-            },
-            5500
-        );
-
+        }, 5500);
     }
-
 }
 
 
@@ -269,24 +401,20 @@ function createConfetti(amount = 30) {
 
 function floatingCelebration() {
 
-    const emojis = [
-
+    var emojis = [
         "🎈",
         "💗",
         "💕",
         "✨",
-        "🎉"
-
+        "🎉",
+        "🌸",
+        "🎂"
     ];
 
 
-    for (
-        let i = 0;
-        i < 20;
-        i++
-    ) {
+    for (var i = 0; i < 20; i++) {
 
-        const item =
+        var item =
             document.createElement("div");
 
 
@@ -312,10 +440,7 @@ function floatingCelebration() {
 
 
         item.style.fontSize =
-            (
-                20 +
-                Math.random() * 20
-            ) + "px";
+            20 + Math.random() * 20 + "px";
 
 
         item.style.zIndex =
@@ -329,40 +454,30 @@ function floatingCelebration() {
         document.body.appendChild(item);
 
 
-        const animation =
+        var animation =
             item.animate(
-
                 [
-
                     {
                         transform:
                             "translateY(0) rotate(0deg)",
-
                         opacity: 1
                     },
-
 
                     {
                         transform:
                             "translateY(-110vh) rotate(360deg)",
-
                         opacity: 0
                     }
-
                 ],
 
-
                 {
-
                     duration:
                         3000 +
                         Math.random() * 2000,
 
                     easing:
                         "ease-out"
-
                 }
-
             );
 
 
@@ -372,9 +487,7 @@ function floatingCelebration() {
                 item.remove();
 
             };
-
     }
-
 }
 
 
@@ -387,32 +500,26 @@ window.showFinalMessage = function () {
     createConfetti(100);
 
 
-    const finalSection =
+    var finalSection =
         document.getElementById("final");
 
 
-    if (!finalSection) {
-        return;
-    }
+    if (!finalSection) return;
 
 
-    setTimeout(
-        function () {
+    setTimeout(function () {
 
-            finalSection.classList.remove(
-                "hidden"
-            );
-
-
-            finalSection.scrollIntoView({
-                behavior: "smooth"
-            });
+        finalSection.classList.remove(
+            "hidden"
+        );
 
 
-        },
-        700
-    );
+        finalSection.scrollIntoView({
+            behavior: "smooth"
+        });
 
+
+    }, 700);
 };
 
 
@@ -425,7 +532,7 @@ document.addEventListener(
     function () {
 
         console.log(
-            "🎀 Misba Birthday Website Loaded Successfully 🎂"
+            "Misba Birthday Website Loaded Successfully"
         );
 
     }
