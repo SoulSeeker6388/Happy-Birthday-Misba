@@ -1,1158 +1,666 @@
-/* =========================================
-   MISBA BIRTHDAY WEBSITE
-   Acode Friendly CSS
-   ========================================= */
-
-
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
-
 
 html {
     scroll-behavior: smooth;
 }
 
-
 body {
-    font-family: 'Poppins', sans-serif;
-    color: #5b3150;
-    background: linear-gradient(
-        135deg,
-        #fff0f7,
-        #f5e8ff,
-        #ffeef6
-    );
+    font-family: "Poppins", sans-serif;
     overflow-x: hidden;
+    background: linear-gradient(135deg, #fff0f7, #ffe4f0, #f9e8ff);
+    color: #4a2942;
 }
 
 
-section {
-    min-height: 100vh;
-    width: 100%;
-    padding: 60px 20px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
-}
-
+/* ================= HIDDEN ================= */
 
 .hidden {
     display: none !important;
 }
 
 
-button {
-    font-family: 'Poppins', sans-serif;
-    border: none;
-    cursor: pointer;
-    transition: 0.3s ease;
+/* ================= BALLOONS ================= */
+
+.balloons {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
 }
-
-
-button:hover {
-    transform: translateY(-3px) scale(1.03);
-}
-
-
-/* =========================================
-   BALLOONS
-   ========================================= */
-
 
 .balloons span {
-    position: fixed;
-    bottom: -100px;
-
-    font-size: 45px;
-
-    z-index: 20;
-    pointer-events: none;
-
-    animation:
-        balloonFloat 11s linear infinite;
+    position: absolute;
+    font-size: 34px;
+    animation: balloonFloat 7s linear infinite;
+    opacity: 0.75;
 }
-
 
 .balloons span:nth-child(1) {
     left: 5%;
-    animation-duration: 10s;
+    animation-delay: 0s;
 }
-
 
 .balloons span:nth-child(2) {
     left: 20%;
-    animation-duration: 13s;
-    animation-delay: 2s;
+    animation-delay: 1.5s;
 }
-
 
 .balloons span:nth-child(3) {
-    left: 38%;
-    animation-duration: 11s;
-    animation-delay: 4s;
-}
-
-
-.balloons span:nth-child(4) {
-    left: 58%;
-    animation-duration: 14s;
-    animation-delay: 1s;
-}
-
-
-.balloons span:nth-child(5) {
-    left: 77%;
-    animation-duration: 12s;
+    left: 40%;
     animation-delay: 3s;
 }
 
-
-.balloons span:nth-child(6) {
-    left: 91%;
-    animation-duration: 15s;
-    animation-delay: 5s;
+.balloons span:nth-child(4) {
+    left: 60%;
+    animation-delay: 0.8s;
 }
 
+.balloons span:nth-child(5) {
+    left: 80%;
+    animation-delay: 2s;
+}
+
+.balloons span:nth-child(6) {
+    left: 92%;
+    animation-delay: 4s;
+}
 
 @keyframes balloonFloat {
 
     0% {
-        transform:
-            translateY(0)
-            rotate(-5deg);
-
-        opacity: 0;
+        bottom: -80px;
+        transform: translateX(0) rotate(0deg);
     }
-
-
-    10% {
-        opacity: 1;
-    }
-
 
     50% {
-        transform:
-            translateY(-55vh)
-            rotate(8deg);
+        transform: translateX(25px) rotate(8deg);
     }
-
 
     100% {
-        transform:
-            translateY(-115vh)
-            rotate(-8deg);
-
-        opacity: 0;
+        bottom: 110vh;
+        transform: translateX(-20px) rotate(-8deg);
     }
 }
 
 
-/* =========================================
-   HEARTS
-   ========================================= */
+/* ================= HEARTS ================= */
 
-
-.hearts span {
+.hearts {
     position: fixed;
-
-    z-index: 2;
+    inset: 0;
     pointer-events: none;
-
-    opacity: 0.35;
-
-    font-size: 25px;
-
-    animation:
-        heartFloat 6s ease-in-out infinite;
+    z-index: 2;
 }
 
+.hearts span {
+    position: absolute;
+    animation: heartFloat 6s ease-in-out infinite;
+    opacity: 0.55;
+}
 
 .hearts span:nth-child(1) {
-    left: 10%;
+    left: 8%;
+    top: 30%;
+}
+
+.hearts span:nth-child(2) {
+    left: 88%;
     top: 20%;
 }
 
-
-.hearts span:nth-child(2) {
-    left: 85%;
-    top: 25%;
-    animation-delay: 1s;
-}
-
-
 .hearts span:nth-child(3) {
-    left: 20%;
-    top: 70%;
-    animation-delay: 2s;
+    left: 12%;
+    top: 75%;
 }
-
 
 .hearts span:nth-child(4) {
-    left: 75%;
-    top: 75%;
-    animation-delay: 3s;
+    left: 82%;
+    top: 70%;
 }
-
 
 .hearts span:nth-child(5) {
     left: 50%;
-    top: 15%;
-    animation-delay: 4s;
+    top: 12%;
 }
-
 
 @keyframes heartFloat {
 
-    0%,
-    100% {
-        transform:
-            translateY(0)
-            scale(1);
-    }
-
-
-    50% {
-        transform:
-            translateY(-25px)
-            scale(1.2);
-    }
-}
-
-
-/* =========================================
-   WELCOME
-   ========================================= */
-
-
-.welcome {
-    position: relative;
-    overflow: hidden;
-}
-
-
-.welcome-content {
-    max-width: 800px;
-
-    position: relative;
-    z-index: 10;
-
-    animation:
-        welcomeAppear 1.5s ease;
-}
-
-
-@keyframes welcomeAppear {
-
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-
-
-    to {
-        opacity: 1;
+    0%, 100% {
         transform: translateY(0);
     }
+
+    50% {
+        transform: translateY(-20px);
+    }
 }
 
+
+/* ================= WELCOME ================= */
+
+.welcome {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.welcome-content {
+    position: relative;
+    z-index: 5;
+    max-width: 700px;
+    width: 100%;
+}
+
+
+/* ================= TEDDY ================= */
+
+.birthday-decoration {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 10px;
+}
+
+.teddy {
+    font-size: 82px;
+    position: relative;
+    animation: teddyBounce 2.5s ease-in-out infinite;
+    filter: drop-shadow(0 8px 8px rgba(120, 60, 100, 0.15));
+}
+
+.teddy-heart {
+    position: absolute;
+    right: -8px;
+    bottom: 5px;
+    font-size: 25px;
+    animation: heartPulse 1.5s infinite;
+}
+
+.side-flower {
+    font-size: 38px;
+    animation: flowerFloat 2.5s ease-in-out infinite;
+}
+
+.right-flower {
+    animation-delay: 0.5s;
+}
+
+@keyframes teddyBounce {
+
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-8px) rotate(2deg);
+    }
+}
+
+@keyframes flowerFloat {
+
+    0%, 100% {
+        transform: translateY(0) rotate(-5deg);
+    }
+
+    50% {
+        transform: translateY(-7px) rotate(5deg);
+    }
+}
+
+@keyframes heartPulse {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+
+/* ================= TEXT ================= */
 
 .small-text {
     font-size: 15px;
-
-    letter-spacing: 1px;
-
-    margin-bottom: 20px;
+    margin-bottom: 12px;
 }
-
 
 .welcome h1 {
-    font-family: 'Pacifico', cursive;
-
-    font-size:
-        clamp(45px, 8vw, 80px);
-
-    line-height: 1.3;
+    font-family: "Pacifico", cursive;
+    font-size: clamp(42px, 8vw, 72px);
+    line-height: 1.25;
+    margin-bottom: 12px;
 }
-
 
 .welcome h1 span {
     display: block;
-
-    font-size:
-        clamp(48px, 9vw, 88px);
 }
-
 
 .subtitle {
-    font-size: 21px;
-
-    font-weight: 600;
-
-    margin:
-        15px 0 25px;
+    font-size: 18px;
+    margin-bottom: 15px;
 }
-
 
 .little-sister {
-    font-size: 17px;
-
-    line-height: 1.8;
-
-    margin-bottom: 35px;
-}
-
-
-.start-btn {
-    color: white;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ff6eaa,
-            #b86cff
-        );
-
-    padding:
-        16px 30px;
-
-    border-radius: 50px;
-
     font-size: 16px;
-
-    box-shadow:
-        0 12px 30px
-        rgba(190, 80, 150, 0.25);
+    line-height: 1.8;
+    margin-bottom: 25px;
 }
 
 
-/* =========================================
-   MESSAGE CARD
-   ========================================= */
+/* ================= BUTTONS ================= */
 
-
-.message-section {
-    background:
-        rgba(255, 255, 255, 0.25);
-}
-
-
-.card {
-    max-width: 680px;
-
-    padding:
-        45px 30px;
-
-    background:
-        rgba(255, 255, 255, 0.92);
-
+button {
+    border: none;
     border-radius: 30px;
+    padding: 13px 25px;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    background: #d96aa7;
+    color: white;
+    box-shadow: 0 7px 18px rgba(180, 70, 130, 0.25);
+    transition: 0.25s ease;
+}
 
-    box-shadow:
-        0 20px 60px
-        rgba(130, 60, 120, 0.15);
+button:hover {
+    transform: translateY(-2px);
+}
 
-    animation:
-        cardAppear 1s ease;
+button:disabled {
+    opacity: 0.8;
+    cursor: default;
+    transform: none;
 }
 
 
-@keyframes cardAppear {
+/* ================= MESSAGE ================= */
 
-    from {
-        opacity: 0;
-
-        transform:
-            scale(0.85);
-    }
-
-
-    to {
-        opacity: 1;
-
-        transform:
-            scale(1);
-    }
+.message-section,
+.cake-section,
+.gallery-section,
+.final-section {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 45px 20px;
 }
 
+.card,
+.photo-banner,
+.final-card {
+    width: 100%;
+    max-width: 650px;
+    padding: 35px 28px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.82);
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(130, 70, 110, 0.12);
+    backdrop-filter: blur(8px);
+}
 
 .emoji-title {
-    font-size: 30px;
+    font-size: 28px;
+    margin-bottom: 12px;
+}
 
+.card h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.card p {
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+
+/* ================= CAKE ================= */
+
+.cake-content {
+    width: 100%;
+    text-align: center;
+}
+
+.cake-content h2 {
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.cake-instruction {
+    margin-bottom: 45px;
+}
+
+
+/* Cake container */
+
+.cake {
+    position: relative;
+    width: 250px;
+    height: 220px;
+    margin: 0 auto 35px;
+}
+
+
+/* Candles */
+
+.candle {
+    position: absolute;
+    width: 14px;
+    height: 55px;
+    background: #fff;
+    border-radius: 5px;
+    top: 0;
+    z-index: 10;
+}
+
+.candle1 {
+    left: 75px;
+}
+
+.candle2 {
+    left: 118px;
+    top: -12px;
+}
+
+.candle3 {
+    left: 161px;
+}
+
+.flame {
+    position: absolute;
+    width: 15px;
+    height: 21px;
+    border-radius: 50% 50% 50% 50%;
+    top: -22px;
+    left: -1px;
+    background: #ffb52e;
+    box-shadow: 0 0 12px #ffcf55;
+    animation: flame 0.7s ease-in-out infinite alternate;
+}
+
+@keyframes flame {
+
+    from {
+        transform: scale(0.9);
+    }
+
+    to {
+        transform: scale(1.1);
+    }
+}
+
+
+/* Cake */
+
+.cake-top {
+    position: absolute;
+    left: 40px;
+    top: 52px;
+    width: 170px;
+    height: 55px;
+    border-radius: 50%;
+    background: #ffb6d5;
+    z-index: 5;
+    transition: transform 1s ease;
+}
+
+.cake-top span {
+    font-size: 25px;
+    position: relative;
+    top: 12px;
+}
+
+.cake-middle {
+    position: absolute;
+    left: 40px;
+    top: 82px;
+    width: 170px;
+    height: 55px;
+    background: #f48fbc;
+    border-radius: 8px;
+    z-index: 4;
+    transition: transform 1s ease;
+}
+
+.cake-bottom {
+    position: absolute;
+    left: 28px;
+    top: 125px;
+    width: 194px;
+    height: 58px;
+    background: #df6fa8;
+    border-radius: 10px 10px 18px 18px;
+    z-index: 3;
+    transition: transform 1s ease;
+}
+
+
+/* ================= CAKE CUTTING ================= */
+
+.cake-knife {
+    text-shadow: 0 3px 5px rgba(0,0,0,0.15);
+}
+
+.cake-cut-line {
+    border-radius: 5px;
+}
+
+
+/* Left/right cake halves */
+
+.cake-half {
+    position: absolute;
+    z-index: 600;
+    pointer-events: none;
+}
+
+
+/* Actual split effect */
+
+.cake.cake-is-cut .cake-top {
+    transform: translateX(16px);
+}
+
+.cake.cake-is-cut .cake-middle {
+    transform: translateX(20px);
+}
+
+.cake.cake-is-cut .cake-bottom {
+    transform: translateX(24px);
+}
+
+
+/* ================= CAKE MESSAGE ================= */
+
+.cake-message {
+    margin-top: 20px;
+    font-size: 17px;
+    line-height: 1.8;
+    min-height: 55px;
+}
+
+
+/* ================= GALLERY ================= */
+
+.photo-banner {
+    max-width: 800px;
+}
+
+.banner-heading {
+    font-family: "Pacifico", cursive;
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+.banner-subtitle {
+    margin-bottom: 25px;
+}
+
+.gallery {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+
+.photo-card {
+    width: 220px;
+    padding: 8px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    transform: rotate(-2deg);
+}
+
+.photo-card:nth-child(2) {
+    transform: rotate(2deg);
+}
+
+.photo-card img {
+    display: block;
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.banner-bottom {
     margin-bottom: 20px;
 }
 
 
-.card h2 {
-    font-family: 'Pacifico', cursive;
-
-    font-size: 38px;
-
-    margin-bottom: 25px;
-}
-
-
-.card p {
-    font-size: 16px;
-
-    line-height: 1.9;
-
-    margin: 15px 0;
-}
-
-
-.card button {
-    margin-top: 20px;
-
-    padding:
-        14px 28px;
-
-    border-radius: 50px;
-
-    color: white;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ff6eaa,
-            #b86cff
-        );
-}
-
-
-/* =========================================
-   CAKE
-   ========================================= */
-
-
-.cake-section {
-    flex-direction: column;
-
-    overflow: hidden;
-}
-
-
-.cake-content {
-    width: 100%;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-}
-
-
-.cake-section h2 {
-    font-family: 'Pacifico', cursive;
-
-    font-size:
-        clamp(34px, 7vw, 58px);
-
-    margin-bottom: 10px;
-}
-
-
-.cake-instruction {
-    margin-bottom: 40px;
-}
-
-
-.cake {
-    position: relative;
-
-    width: 280px;
-    height: 240px;
-
-    margin:
-        20px auto 35px;
-}
-
-
-/* CAKE BOTTOM */
-
-
-.cake-bottom {
-    position: absolute;
-
-    left: 10px;
-    bottom: 0;
-
-    width: 260px;
-    height: 85px;
-
-    background:
-        linear-gradient(
-            #ff91bd,
-            #ff65a3
-        );
-
-    border-radius:
-        15px 15px 25px 25px;
-
-    box-shadow:
-        0 15px 30px
-        rgba(150, 60, 100, 0.2);
-}
-
-
-/* CAKE MIDDLE */
-
-
-.cake-middle {
-    position: absolute;
-
-    left: 25px;
-    bottom: 70px;
-
-    width: 230px;
-    height: 75px;
-
-    background:
-        linear-gradient(
-            #fff7fb,
-            #ffd7e8
-        );
-
-    border-radius: 15px;
-}
-
-
-/* CAKE TOP */
-
-
-.cake-top {
-    position: absolute;
-
-    left: 45px;
-    bottom: 130px;
-
-    width: 190px;
-    height: 55px;
-
-    background: white;
-
-    border-radius: 50%;
-
-    border:
-        5px solid #ffb1d0;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    font-size: 28px;
-
-    z-index: 4;
-}
-
-
-/* CANDLES */
-
-
-.candle {
-    position: absolute;
-
-    bottom: 175px;
-
-    width: 15px;
-    height: 55px;
-
-    background:
-        repeating-linear-gradient(
-            45deg,
-            white,
-            white 6px,
-            #ff75ad 6px,
-            #ff75ad 12px
-        );
-
-    border-radius: 5px;
-
-    z-index: 10;
-}
-
-
-.candle1 {
-    left: 88px;
-}
-
-
-.candle2 {
-    left: 132px;
-}
-
-
-.candle3 {
-    left: 176px;
-}
-
-
-/* FLAME */
-
-
-.flame {
-    position: absolute;
-
-    top: -27px;
-    left: 1px;
-
-    width: 13px;
-    height: 25px;
-
-    background: #ffb52e;
-
-    border-radius: 50%;
-
-    animation:
-        flameDance 0.5s
-        infinite alternate;
-}
-
-
-@keyframes flameDance {
-
-    from {
-        transform:
-            scale(0.9)
-            rotate(-5deg);
-    }
-
-
-    to {
-        transform:
-            scale(1.15)
-            rotate(5deg);
-    }
-}
-
-
-/* BLOW BUTTON */
-
-
-.blow-btn {
-    padding:
-        14px 27px;
-
-    border-radius: 50px;
-
-    background: white;
-
-    color: #d34c91;
-
-    border:
-        2px solid #ff8fbd;
-
-    font-size: 16px;
-}
-
-
-.cake-message {
-    margin-top: 20px;
-
-    font-size: 18px;
-
-    font-weight: 600;
-
-    line-height: 1.8;
-}
-
-
-/* =========================================
-   PHOTO BANNER
-   ========================================= */
-
-
-.gallery-section {
-    background:
-        linear-gradient(
-            135deg,
-            #fff0f8,
-            #f4e6ff
-        );
-
-    overflow: hidden;
-}
-
-
-/*
-   Banner initially comes from the centre.
-*/
-
-
-.photo-banner {
-    width: min(1050px, 100%);
-
-    padding:
-        35px 25px 40px;
-
-    background:
-        rgba(255, 255, 255, 0.94);
-
-    border-radius: 35px;
-
-    box-shadow:
-        0 25px 70px
-        rgba(100, 50, 100, 0.18);
-
-    transform:
-        scaleY(0.05)
-        scaleX(0.7);
-
-    transform-origin: center;
-
-    opacity: 0;
-
-    animation:
-        bannerReveal 1.3s
-        cubic-bezier(
-            0.17,
-            0.67,
-            0.28,
-            1.2
-        )
-        forwards;
-}
-
-
-@keyframes bannerReveal {
-
-    0% {
-        opacity: 0;
-
-        transform:
-            scaleY(0.05)
-            scaleX(0.7);
-    }
-
-
-    60% {
-        opacity: 1;
-
-        transform:
-            scaleY(1.05)
-            scaleX(1.02);
-    }
-
-
-    100% {
-        opacity: 1;
-
-        transform:
-            scaleY(1)
-            scaleX(1);
-    }
-}
-
-
-.banner-heading {
-    font-family: 'Pacifico', cursive;
-
-    font-size:
-        clamp(32px, 6vw, 55px);
-
-    margin-bottom: 10px;
-}
-
-
-.banner-subtitle {
-    font-size: 16px;
-
-    margin-bottom: 30px;
-}
-
-
-/* PHOTOS */
-
-
-.gallery {
-    width: 100%;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 25px;
-
-    margin-bottom: 25px;
-}
-
-
-.photo-card {
-    background: white;
-
-    padding: 10px;
-
-    border-radius: 22px;
-
-    box-shadow:
-        0 15px 35px
-        rgba(100, 50, 100, 0.16);
-
-    transition:
-        0.4s ease;
-
-    animation:
-        photoPop 0.8s ease
-        backwards;
-}
-
-
-.photo-card:nth-child(1) {
-    animation-delay: 0.5s;
-
-    transform:
-        rotate(-3deg);
-}
-
-
-.photo-card:nth-child(2) {
-    animation-delay: 0.7s;
-
-    transform:
-        rotate(2deg);
-}
-
-
-.photo-card:nth-child(3) {
-    animation-delay: 0.9s;
-
-    transform:
-        rotate(-2deg);
-}
-
-
-@keyframes photoPop {
-
-    from {
-        opacity: 0;
-
-        transform:
-            scale(0.5)
-            rotate(0);
-    }
-
-
-    to {
-        opacity: 1;
-    }
-}
-
-
-.photo-card:hover {
-    transform:
-        translateY(-10px)
-        rotate(0);
-}
-
-
-.photo-card img {
-    width: 100%;
-
-    height: 330px;
-
-    object-fit: cover;
-
-    border-radius: 15px;
-
-    display: block;
-}
-
-
-.banner-bottom {
-    font-size: 15px;
-
-    margin-bottom: 25px;
-}
-
-
-.photo-banner button {
-    padding:
-        14px 28px;
-
-    border-radius: 50px;
-
-    color: white;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ff6eaa,
-            #b86cff
-        );
-
-    font-size: 15px;
-}
-
-
-/* =========================================
-   FINAL
-   ========================================= */
-
-
-.final-section {
-    background:
-        linear-gradient(
-            135deg,
-            #ffeaf5,
-            #f0e2ff
-        );
-}
-
+/* ================= FINAL ================= */
 
 .final-card {
-    max-width: 680px;
-
-    padding:
-        35px 25px;
-
-    background:
-        rgba(255, 255, 255, 0.94);
-
-    border-radius: 35px;
-
-    box-shadow:
-        0 25px 70px
-        rgba(100, 50, 100, 0.2);
-
-    animation:
-        finalAppear 1.2s ease;
+    max-width: 700px;
 }
-
-
-@keyframes finalAppear {
-
-    from {
-        opacity: 0;
-
-        transform:
-            translateY(50px)
-            scale(0.9);
-    }
-
-
-    to {
-        opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
-    }
-}
-
 
 .final-photo {
     width: 190px;
     height: 190px;
-
-    margin:
-        0 auto 25px;
-
-    padding: 7px;
-
-    border-radius: 50%;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ff76af,
-            #bd6eff
-        );
+    margin: 0 auto 20px;
 }
-
 
 .final-photo img {
     width: 100%;
     height: 100%;
-
     object-fit: cover;
-
     border-radius: 50%;
+    border: 6px solid white;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
 }
-
 
 .final-card h1 {
-    font-family: 'Pacifico', cursive;
-
-    font-size:
-        clamp(34px, 7vw, 58px);
-
-    margin-bottom: 25px;
+    font-family: "Pacifico", cursive;
+    font-size: 40px;
+    margin-bottom: 20px;
 }
-
 
 .final-card p {
-    font-size: 16px;
-
-    line-height: 1.9;
-
-    margin: 15px 0;
+    line-height: 1.8;
+    margin-bottom: 18px;
 }
-
 
 .special-line {
-    margin-top: 25px !important;
-
-    font-size: 18px !important;
-}
-
-
-.signature {
-    margin-top: 30px;
-
-    font-style: italic;
-
-    font-weight: 600;
-}
-
-
-.final-emoji {
-    font-size: 25px;
-
     margin-top: 25px;
 }
 
+.signature {
+    margin-top: 25px;
+    font-weight: 600;
+}
 
-/* =========================================
-   CONFETTI
-   ========================================= */
+.final-emoji {
+    margin-top: 20px;
+    font-size: 25px;
+}
 
+
+/* ================= CONFETTI ================= */
+
+#confetti-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 9999;
+}
 
 .confetti {
     position: fixed;
-
-    top: -30px;
-
-    z-index: 9999;
-
-    pointer-events: none;
-
-    font-size: 25px;
-
-    animation:
-        confettiFall 3s
-        linear forwards;
+    top: -50px;
+    animation-name: confettiFall;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
 }
-
 
 @keyframes confettiFall {
 
     0% {
-        transform:
-            translateY(0)
-            rotate(0);
-
+        transform: translateY(0) rotate(0deg);
         opacity: 1;
     }
 
-
     100% {
-        transform:
-            translateY(110vh)
-            rotate(720deg);
-
+        transform: translateY(110vh) rotate(720deg);
         opacity: 0;
     }
 }
 
 
-/* =========================================
-   MOBILE
-   ========================================= */
+/* ================= MOBILE ================= */
 
+@media (max-width: 600px) {
 
-@media (max-width: 700px) {
-
-
-    section {
-        padding:
-            50px 15px;
+    .teddy {
+        font-size: 70px;
     }
 
+    .side-flower {
+        font-size: 30px;
+    }
+
+    .birthday-decoration {
+        gap: 10px;
+    }
 
     .welcome h1 {
-        font-size: 45px;
+        font-size: 43px;
     }
 
-
-    .welcome h1 span {
-        font-size: 48px;
+    .card,
+    .photo-banner,
+    .final-card {
+        padding: 28px 20px;
     }
-
-
-    .little-sister {
-        font-size: 15px;
-    }
-
-
-    .card {
-        padding:
-            35px 20px;
-    }
-
-
-    .card h2 {
-        font-size: 31px;
-    }
-
-
-    .gallery {
-        grid-template-columns: 1fr;
-
-        max-width: 360px;
-
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-
-    .photo-card,
-    .photo-card:nth-child(1),
-    .photo-card:nth-child(2),
-    .photo-card:nth-child(3) {
-        transform: rotate(0);
-    }
-
-
-    .photo-card img {
-        height: 380px;
-    }
-
 
     .cake {
-        transform: scale(0.85);
-
-        margin-top: 0;
-        margin-bottom: 10px;
+        transform: scale(0.9);
     }
 
-
-    .balloons span {
-        font-size: 35px;
+    .final-card h1 {
+        font-size: 32px;
     }
 
-
-    .final-photo {
-        width: 165px;
-        height: 165px;
+    .photo-card {
+        width: 190px;
     }
 
-
-    .photo-banner {
-        padding:
-            30px 15px 35px;
+    .photo-card img {
+        height: 210px;
     }
-
-
-    .banner-heading {
-        font-size: 35px;
-    }
-
 }
