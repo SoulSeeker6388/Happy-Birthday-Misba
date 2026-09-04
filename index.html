@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Happy Birthday Misba 🎂</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+
+    <!-- FLOATING BALLOONS -->
+
+    <div class="balloons">
+
+        <span>🎈</span>
+        <span>🎈</span>
+        <span>🎈</span>
+        <span>🎈</span>
+        <span>🎈</span>
+        <span>🎈</span>
+
+    </div>
+
+
+    <!-- FLOATING HEARTS -->
+
+    <div class="hearts">
+
+        <span>💗</span>
+        <span>💖</span>
+        <span>💕</span>
+        <span>💞</span>
+        <span>💗</span>
+
+    </div>
+
+
+    <!-- ================= HOME ================= -->
+
+    <section class="welcome" id="welcome">
+
+        <div class="welcome-content">
+
+            <p class="small-text">
+                ✨ A Small Birthday Surprise ✨
+            </p>
+
+
+            <h1>
+
+                Happy Birthday
+
+                <span>
+                    Misba Parveen
+                </span>
+
+            </h1>
+
+
+            <p class="subtitle">
+                🎀 Miss Aarti Shukla 🎀
+            </p>
+
+
+            <p class="little-sister">
+
+                Meri kam height wali
+                chhoti si behen ke liye
+
+                <br>
+
+                ek chhota sa birthday gift 😄🎁
+
+            </p>
+
+
+            <button class="start-btn"
+                onclick="startSurprise()">
+
+                🎁 Open Your Surprise
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= MESSAGE ================= -->
+
+    <section class="message-section hidden"
+        id="message">
+
+        <div class="card">
+
+            <div class="emoji-title">
+                🌸 🎀 🌸
+            </div>
+
+
+            <h2>
+                Ek Minute... 😌
+            </h2>
+
+
+            <p>
+                Dear Misba,
+            </p>
+
+
+            <p>
+                College mein mile hue abhi
+                <b>bas ek mahina</b> hi hua hai... 😂
+            </p>
+
+
+            <p>
+                Lekin itne time mein itna toh
+                samajh aa hi gaya ki tum
+                seedhi-saadhi bilkul nahi ho. 😆
+            </p>
+
+
+            <p>
+                Thodi si <b>natkhat</b>,
+                thodi si <b>nakhrebaaz</b>
+                aur haan...
+                <b>height mein thodi si compact</b> bhi. 😂
+            </p>
+
+
+            <p>
+                Toh socha...
+                <br>
+                apni chhoti si behen ke liye
+                ek chhota sa birthday surprise
+                toh banta hai. 🎂✨
+            </p>
+
+
+            <p>
+                Abhi toh college ki journey
+                shuru hi hui hai...
+                <br>
+                aage aur masti baaki hai. 😄
+            </p>
+
+
+            <button onclick="showCake()">
+
+                🎂 Cake Time!
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CAKE ================= -->
+
+    <section class="cake-section hidden"
+        id="cake">
+
+        <div class="cake-content">
+
+            <h2>
+                🎂 Make A Wish! 🎂
+            </h2>
+
+
+            <p class="cake-instruction">
+
+                Candles ko blow karo
+                aur apni wish maango ✨
+
+            </p>
+
+
+            <div class="cake">
+
+                <div class="candle candle1">
+                    <div class="flame"></div>
+                </div>
+
+
+                <div class="candle candle2">
+                    <div class="flame"></div>
+                </div>
+
+
+                <div class="candle candle3">
+                    <div class="flame"></div>
+                </div>
+
+
+                <div class="cake-top">
+                    <span>💗</span>
+                </div>
+
+
+                <div class="cake-middle"></div>
+
+
+                <div class="cake-bottom"></div>
+
+            </div>
+
+
+            <button class="blow-btn"
+                onclick="blowCandles()">
+
+                💨 Blow Candles
+
+            </button>
+
+
+            <p id="cake-message"
+                class="cake-message">
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= PHOTO BANNER ================= -->
+
+    <section class="gallery-section hidden"
+        id="gallery">
+
+        <div class="photo-banner">
+
+            <div class="banner-heading">
+
+                🎉 Birthday Girl Alert! 🎉
+
+            </div>
+
+
+            <p class="banner-subtitle">
+
+                Bas birthday hai...
+                photos toh banti hain! 📸😂
+
+            </p>
+
+
+            <div class="gallery">
+
+
+                <!-- PHOTO 1 -->
+
+                <div class="photo-card">
+
+                    <img src="photo1.jpg"
+                        alt="Misba Photo 1">
+
+                </div>
+
+
+                <!-- PHOTO 2 -->
+
+                <div class="photo-card">
+
+                    <img src="photo2.jpg"
+                        alt="Misba Photo 2">
+
+                </div>
+
+
+            </div>
+
+
+            <p class="banner-bottom">
+
+                📸 Camera roll ne bhi
+                aaj kaam kar diya 😆
+
+            </p>
+
+
+            <button onclick="showFinalMessage()">
+
+                💌 One Last Surprise
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FINAL ================= -->
+
+    <section class="final-section hidden"
+        id="final">
+
+        <div class="final-card">
+
+
+            <!-- PHOTO 3 ONLY FOR FINAL PAGE -->
+
+            <div class="final-photo">
+
+                <img src="photo3.jpg"
+                    alt="Misba">
+
+            </div>
+
+
+            <h1>
+
+                Happy Birthday Misba! 🎂🎉
+
+            </h1>
+
+
+            <p>
+
+                May your birthday be filled with
+                happiness, laughter and
+                lots of good moments. ✨
+
+            </p>
+
+
+            <p>
+
+                College mein mile hue
+                abhi ek mahina hi hua hai,
+
+                <br>
+
+                lekin hopefully aage bhi
+                aisi hi masti chalti rahegi. 😄
+
+            </p>
+
+
+            <p>
+
+                Hamesha khush rehna,
+                haste rehna aur apna
+                <b>natkhatpan</b> maintain rakhna. 😂
+
+            </p>
+
+
+            <p class="special-line">
+
+                Aur haan...
+
+                <br><br>
+
+                height chhoti hai toh kya hua,
+
+                <br>
+
+                <b>
+                    birthday surprise toh
+                    full size hona chahiye! 😎🎁
+                </b>
+
+            </p>
+
+
+            <div class="signature">
+
+                — Tumhare Bade Bhai ki taraf se 🎀
+
+            </div>
+
+
+            <div class="final-emoji">
+
+                🎈 🎂 🎉 📸 🎁 ✨
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- CONFETTI -->
+
+    <div id="confetti-container"></div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>
